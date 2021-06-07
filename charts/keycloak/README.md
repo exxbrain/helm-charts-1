@@ -560,7 +560,7 @@ readinessProbe: |
 
 startupProbe: |
   httpGet:
-    path: /auth/
+    path: {{ if ne .Values.contextPath "" }}/{{ .Values.contextPath }}{{ end }}/
     port: http
   initialDelaySeconds: 30
   timeoutSeconds: 1
